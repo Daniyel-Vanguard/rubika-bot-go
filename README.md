@@ -1,14 +1,17 @@
-🤖 کتابخانه روبیکا برای Go - Rubika Bot Go Library
+# 🤖 کتابخانه روبیکا برای Go - Rubika Bot Go Library
+  <img align="center" src="https://rubika.ir/static/images/logo.svg"/>
+  <br/>
+  <img align="center" src="https://go.dev/images/gophers/ladder.svg"/>
 
 یک کتابخانه ساده و قدرتمند برای ساخت ربات‌های روبیکا با زبان Go
 
-📦 نصب
+# 📦 نصب
 
 ```bash
 go get github.com/username/rubika-bot-go
 ```
 
-🚀 شروع سریع
+# 🚀 شروع سریع
 
 ```go
 package main
@@ -55,7 +58,7 @@ func main() {
 }
 ```
 
-📖 مستندات کامل
+# 📖 مستندات کامل
 
 📋 ساختار اصلی
 
@@ -64,10 +67,6 @@ func main() {
 bot := rubika.NewRobot(token string, options ...func(*Robot))
 
 // آپشن‌های قابل تنظیم
-rubika.WithTimeout(timeout time.Duration)    // تنظیم تایم‌اوت
-rubika.WithPlatform(platform string)         // تنظیم پلتفرم (web, android, ios)
-rubika.WithAuth(auth string)                 // تنظیم احراز هویت
-rubika.WithSessionName(name string)          // تنظیم نام سشن
 ```
 
 💬 مدیریت پیام‌ها
@@ -159,7 +158,7 @@ r.SendVoice(chatID, "path/to/voice.ogg", nil)
 r.SendGif(chatID, "path/to/animation.gif", nil)
 ```
 
-🎯 مثال‌های کاربردی
+# 🎯 مثال‌های کاربردی
 
 مثال ۱: ربات پرسش و پاسخ
 
@@ -249,7 +248,7 @@ func main() {
 }
 ```
 
-🔧 مدیریت خطاها
+# 🔧 مدیریت خطاها
 
 ```go
 bot.OnMessage(func(r *rubika.Robot, m *rubika.Message) {
@@ -268,7 +267,7 @@ bot.OnMessage(func(r *rubika.Robot, m *rubika.Message) {
 })
 ```
 
-🌐 وب‌هوک (اختیاری)
+# 🌐 وب‌هوک (اختیاری)
 
 ```go
 // راه‌اندازی ربات با وب‌هوک
@@ -283,7 +282,7 @@ if err != nil {
 }
 ```
 
-📊 لاگ و دیباگ
+# 📊 لاگ و دیباگ
 
 ```go
 // فعال کردن لاگ پیشرفته
@@ -295,27 +294,15 @@ bot.OnMessage(func(r *rubika.Robot, m *rubika.Message) {
 })
 ```
 
-🚀 استقرار
+# 🚀 استقرار
 
 اجرای本地
 
 ```bash
-go run main.go
+go run rubika_bot.go YOUR_BOT.go
 ```
 
-کامپایل برای تولید
-
-```bash
-go build -o rubika-bot main.go
-```
-
-اجرای فایل کامپایل شده
-
-```bash
-./rubika-bot
-```
-
-🤝 مشارکت
+# 🤝 مشارکت
 
 1. فورک ریپو
 2. ایجاد برنچ جدید
@@ -323,14 +310,13 @@ go build -o rubika-bot main.go
 4. push به برنچ
 5. ایجاد Pull Request
 
-📜 لایسنس
+# 📜 لایسنس
 
 این پروژه تحت لایسنس MIT منتشر شده است.
 
-📞 پشتیبانی
+# 📞 پشتیبانی
 
-· 📧 ایمیل: support@example.com
-· 📱 تلگرام: @Support
+· 📧 ایمیل: hadipishghadam13@gmail.com
 · 🐛 issues: GitHub Issues
 
 ---
