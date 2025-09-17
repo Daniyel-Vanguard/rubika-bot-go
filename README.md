@@ -8,7 +8,7 @@
 # 📦 نصب
 
 ```bash
-go get github.com/username/rubika-bot-go
+git clone https://github.com/Daniyel-Vanguard/rubika-bot-go.git
 ```
 
 # 🚀 شروع سریع
@@ -19,7 +19,6 @@ package main
 import (
     "fmt"
     "time"
-    "github.com/username/rubika-bot-go"
 )
 
 func main() {
@@ -168,7 +167,6 @@ package main
 import (
     "fmt"
     "time"
-    "github.com/username/rubika-bot-go"
 )
 
 func main() {
@@ -228,7 +226,6 @@ package main
 import (
     "fmt"
     "time"
-    "github.com/username/rubika-bot-go"
 )
 
 func main() {
