@@ -572,21 +572,23 @@ func (r *Robot) ForwardMessage(fromChatID, messageID, toChatID string, disableNo
 	})
 }
 
-func CreateInlineButton(text, buttonID string, style ...string) map[string]interface{} {
-	btnStyle := "Primary"
-	if len(style) > 0 {
-		btnStyle = style[0]
+func CreateInlineButton(text, buttonID string, buttonType ...string) map[string]interface{} {
+	btnType := "Simple"
+	if len(buttonType) > 0 {
+		btnType = buttonType[0]
 	}
 
 	return map[string]interface{}{
-		"text":      text,
-		"button_id": buttonID,
-		"style":     btnStyle,
+		"id":          buttonID,
+		"type":        btnType,
+		"button_text": text,
 	}
 }
 
-func CreateButtonRow(buttons ...map[string]interface{}) []map[string]interface{} {
-	return buttons
+func CreateButtonRow(buttons ...map[string]interface{}) map[string]interface{} {
+	return map[string]interface{}{
+		"buttons": buttons,
+	}
 }
 
 func CreateInlineKeypad(rows []map[string]interface{}) map[string]interface{} {
