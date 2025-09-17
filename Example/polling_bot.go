@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"strings"
 	"time"
@@ -17,59 +18,57 @@ func main() {
 	bot.OnMessage(func(r *Robot, m *Message) {
 		fmt.Printf("📩 Received message from %s: %s\n", m.SenderID, m.Text)
 		
-		switch {
-		case strings.HasPrefix(m.Text, "/start"):
-			btn1 := CreateInlineButton("📊 اطلاعات ربات", "bot_info", "Primary")
-			btn2 := CreateInlineButton("ℹ️ راهنما", "help", "Secondary")
-			row := []map[string]interface{}{btn1, btn2}
-			keypad := CreateInlineKeypad(row)
+		if strings.HasPrefix(m.Text, "/start") {
+			fmt.Println("✅ Processing /start command")
 			
-			r.SendMessage(m.ChatID, "🤖 به ربات خوش آمدید!\n\nبرای شروع از دکمه‌های زیر استفاده کنید:", map[string]interface{}{
+			btn1 := CreateInlineButton("📊 اطلاعات ربات", "bot_info", "Simple")
+			btn2 := CreateInlineButton("ℹ️ راهنما", "help", "Simple")
+			
+			row := CreateButtonRow(btn1, btn2)
+			
+			keypad := CreateInlineKeypad([]map[string]interface{}{row})
+			
+			payload := map[string]interface{}{
+				"chat_id": m.ChatID,
+				"text":    "🤖 به ربات خوش آمدید!\n\nبرای شروع از دکمه‌های زیر استفاده کنید:",
 				"inline_keypad": keypad,
-			})
-
-		case strings.HasPrefix(m.Text, "/help"):
-			helpText := `📖 راهنمای ربات:
-/start - شروع کار با ربات
-/help - نمایش راهنما
-/ping - تست ارتباط`
+			}
 			
-			r.SendMessage(m.ChatID, helpText)
-
-		case strings.HasPrefix(m.Text, "/ping"):
-			r.SendMessage(m.ChatID, "🏓 Pong! ربات فعال است!")
-
-		default:
-			r.SendMessage(m.ChatID, fmt.Sprintf("👤 شما گفتید: %s\n\n💡 از /help برای راهنما استفاده کنید.", m.Text))
+			result, err := r.post("sendMessage", payload)
+			
+			if err != nil {
+				fmt.Printf("❌ Error: %v\n", err)
+			} else {
+				fmt.Println("✅ Message sent, checking response...")
+				if result != nil {
+					jsonData, _ := json.MarshalIndent(result, "", "  ")
+					fmt.Printf("📋 API Response: %s\n", string(jsonData))
+					
+					if status, ok := result["status"].(string); ok {
+						fmt.Printf("📊 API Status: %s\n", status)
+						if status != "OK" && status != "ok" {
+							if data, ok := result["data"].(map[string]interface{}); ok {
+								if errorMsg, ok := data["error_message"].(string); ok {
+									fmt.Printf("❌ Error Message: %s\n", errorMsg)
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	})
 
 	bot.OnCallback("bot_info", func(r *Robot, m *Message) {
-		info, err := r.GetMe()
-		if err == nil {
-			botName := "ربات"
-			if data, ok := info["data"].(map[string]interface{}); ok {
-				if botData, ok := data["bot"].(map[string]interface{}); ok {
-					if name, ok := botData["name"].(string); ok {
-						botName = name
-					}
-				}
-			}
-			r.SendMessage(m.ChatID, fmt.Sprintf("🤖 نام ربات: %s\n✅ وضعیت: فعال\n🎯 حالت: Polling", botName))
-		}
+		fmt.Println("✅ Button bot_info clicked")
+		r.SendMessage(m.ChatID, "📊 اطلاعات ربات: این یک ربات تست است", nil)
 	})
 
 	bot.OnCallback("help", func(r *Robot, m *Message) {
-		helpText := `🎯 دستورات قابل استفاده:
-• /start - شروع کار
-• /help - راهنمایی
-• /ping - تست ارتباط
-
-🤖 این ربات در حالت Polling کار می‌کند.`
-		
-		r.SendMessage(m.ChatID, helpText)
+		fmt.Println("✅ Button help clicked")
+		r.SendMessage(m.ChatID, "ℹ️ راهنما: از /start استفاده کنید", nil)
 	})
 
-	fmt.Println("⏳ Bot is running in polling mode...")
+	fmt.Println("⏳ Bot is running...")
 	bot.Run()
 }
