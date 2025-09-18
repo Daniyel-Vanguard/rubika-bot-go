@@ -1,4 +1,4 @@
-package rubika_bot_go
+package main
 
 import (
 	"bytes"
