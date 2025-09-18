@@ -46,15 +46,6 @@ bot := rubika.NewRobot("YOUR_BOT_TOKEN")
 )
 ```
 
-آپشن‌های پیکربندی
-
-آپشن توضیح مقدار پیش‌فرض
-WithTimeout تایم‌اوت درخواست‌ها 10 * time.Second
-WithPlatform پلتفرم مورد نظر "web"
-WithSessionName نام session ""
-WithAuth کلید احراز هویت ""
-WithKey کلید رمزنگاری ""
-
 # 💬 مدیریت پیام‌ها
 
 هندلر پیام متنی
@@ -411,7 +402,6 @@ package main
 import (
     "fmt"
     "log"
-    "github.com/username/rubika-bot-go"
 )
 
 func main() {
@@ -444,7 +434,6 @@ package main
 
 import (
     "fmt"
-    "github.com/username/rubika-bot-go"
 )
 
 func main() {
@@ -525,7 +514,7 @@ func isValidInput(input string) bool {
 
 ```bash
 # گزارش باگ
-git clone https://github.com/username/rubika-bot-go.git
+git clone https://github.com/Daniyel-Vanguard/rubika-bot-go.git
 cd rubika-bot-go
 # ایجاد issue در GitHub
 ```
@@ -551,7 +540,7 @@ Copyright (c) 2024 [نام شما]
 
 ```bash
 # مشارکت در توسعه
-git fork https://github.com/username/rubika-bot-go.git
+git fork https://github.com/Daniyel-Vanguard/rubika-bot-go.git
 # ایجاد pull request
 ```
 
