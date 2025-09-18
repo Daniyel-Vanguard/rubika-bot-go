@@ -293,7 +293,7 @@ bot.OnMessage(func(r *rubika.Robot, m *rubika.Message) {
 
 # 🚀 استقرار
 
-اجرای本地
+اجرای
 
 ```bash
 go run rubika_bot.go YOUR_BOT.go
