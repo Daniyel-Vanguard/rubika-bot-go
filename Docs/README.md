@@ -525,7 +525,7 @@ cd rubika-bot-go
 ```text
 MIT License
 
-Copyright (c) 2024 [نام شما]
+Copyright (c) 2024 [Daniyel-Vanguard]
 
 اجازه استفاده، کپی،، ادغام، انتشار، توزیع،
 فروش و زیرمجموعه سازی این نرم‌افزار به شرط
