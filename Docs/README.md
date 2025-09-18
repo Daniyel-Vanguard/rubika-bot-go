@@ -42,7 +42,6 @@ git clone https://github.com/Daniyel-Vanguard/rubika-bot-go.git
 // ساده‌ترین روش
 bot := rubika.NewRobot("YOUR_BOT_TOKEN")
 
-// با تنظیمات پیشرفت
 )
 ```
 
@@ -230,7 +229,7 @@ r.SendPoll(chatID, question, options)
 ارسال عکس
 
 ```go
-// ارسال عکس از مسیر本地
+// ارسال عکس از مسیر
 r.SendImage(chatID, "./images/welcome.jpg", map[string]interface{}{
     "text": "عکس خوش‌آمدگویی",
     "disable_notification": true,
