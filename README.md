@@ -1,7 +1,7 @@
 # 🤖 کتابخانه روبیکا برای Go - Rubika Bot Go Library
-  <img align="center" src="https://rubika.ir/static/images/logo.svg"/>
+  <img align="center" width="200" height="200" src="https://rubika.ir/static/images/logo.svg"/>
   <br/>
-  <img align="center" src="https://go.dev/images/gophers/ladder.svg"/>
+  <img align="center" width="200" height="200" src="https://go.dev/images/gophers/ladder.svg"/>
 
 یک کتابخانه ساده و قدرتمند برای ساخت ربات‌های روبیکا با زبان Go
 
